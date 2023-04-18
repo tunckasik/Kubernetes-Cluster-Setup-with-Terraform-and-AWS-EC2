@@ -24,9 +24,9 @@ This Terraform project automates the creation of a Kubernetes cluster on AWS EC2
     - Paste the following content, replacing the `HostName` value with the master_public_dns output from Terraform:
 
 ```sql
-Host MasterEC2@EC2_2
+Host MasterEC2
     HostName ec2-44-204-163-213.compute-1.amazonaws.com
-    IdentityFile C:\Users\Admin\.ssh\dockerkey.pem # Change here! and check your 'key-name' on main.tf
+    IdentityFile C:\Users\Admin\.ssh\<your-key-pair-name>.pem # Change here! and check your 'key-pair' name on main.tf
     User ubuntu
 Host *
     TCPKeepAlive yes
@@ -37,7 +37,7 @@ Host *
 
     - Open the remote window in VS Code (click the >< green icon).
     - Select Connect to Host.
-    - Choose <yourhostname>.
+    - Choose `MasterEC2`.
 
 1. When you're finished, do not forget to `destroy` the infrastructure.
 
