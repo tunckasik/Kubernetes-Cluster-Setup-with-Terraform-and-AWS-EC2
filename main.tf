@@ -45,12 +45,12 @@ resource "aws_instance" "worker" {
 }
 
 resource "aws_iam_instance_profile" "ec2connectprofile" {
-  name = "ec2connectprofile"
+  name = "ec2connectprofile-${local.name}"
   role = aws_iam_role.ec2connectcli.name
 }
 
 resource "aws_iam_role" "ec2connectcli" {
-  name = "ec2connectcli"
+  name = "ec2connectcli-${local.name}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -128,6 +128,18 @@ resource "aws_security_group" "tf-k8s-master-sec-gr" {
   ingress {
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
+    from_port   = 8081
+    to_port     = 8081
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
