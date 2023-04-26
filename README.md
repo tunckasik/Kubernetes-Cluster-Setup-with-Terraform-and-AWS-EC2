@@ -35,6 +35,7 @@ This Terraform project automates the creation of a Kubernetes cluster on AWS EC2
         TCPKeepAlive yes
         ServerAliveInterval 120
     ```
+
     > **IMPORTANT**: Make sure the instance's state is ready!
 
 1. Connect to the master node:
@@ -42,6 +43,8 @@ This Terraform project automates the creation of a Kubernetes cluster on AWS EC2
     - Open the remote window in VS Code (click the >< green icon).
     - Select Connect to Host.
     - Choose `MasterEC2`.
+
+    > **Note**: Make sure the instance's state is ready!
 
 
 1. When you're finished, do not forget to `destroy` the infrastructure.
